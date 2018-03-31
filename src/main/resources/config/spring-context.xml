@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/mvc
+            http://www.springframework.org/schema/mvc/spring-mvc.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
+       default-lazy-init="true">
+
+
+    <!-- 引入外部properties文件 -->
+    <context:property-placeholder location="classpath:properties/*.properties" ignore-unresolvable="true"/>
+    <!--<context:property-placeholder location="classpath:properties/log4j.properties" ignore-unresolvable="true"/>-->
+
+    <!-- 添加注解驱动 -->
+    <mvc:annotation-driven />
+
+
+    <!-- 默认扫描的包路径 -->
+    <context:component-scan base-package="controller,impl,dao">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+        <context:include-filter type="annotation" expression="org.springframework.scheduling.annotation.Async" />
+    </context:component-scan>
+
+
+    <!-- 只读的SessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" scope="singleton">
+        <property name="dataSource" ref="dataSourceWrite" />
+        <property name="mapperLocations" value="classpath*:dao/table/mapper/*Mapper.xml"/>
+    </bean>
+
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage"  value="dao" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+    </bean>
+
+    <!--  ================================== import sub-config file  ================================== -->
+    <import resource="spring-mybatis.xml" />
+    <import resource="spring-servlet.xml" />
+    <!--  ================================== /import sub-config file  ================================== -->
+
+
+
+
+    <mvc:default-servlet-handler/>
+
+    <!-- 将配置文件读取到容器中，交给Spring管理 -->
+    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath:properties/file.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 启用aop代理 -->
+    <!--<aop:aspectj-autoproxy proxy-target-class="true"/>-->
+
+
+</beans>
