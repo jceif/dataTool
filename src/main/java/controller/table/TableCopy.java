@@ -1,17 +1,8 @@
 package controller.table;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.HashMap;
-
-import java.util.List;
-import java.util.Map;
-
 import controller.BaseController;
 import model.table.Table;
 import model.table.TableColumn;
-import org.json.JSONML;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,11 +12,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import service.table.*;
 import tool.TableUtil;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 
 @Controller
-@RequestMapping("/table")
-public class TableAction extends BaseController {
-    private static String filePath = "ss//";
+@RequestMapping("/tableCopy")
+public class TableCopy extends BaseController {
+  /*  private static String filePath = "ss//";
 
     @Autowired
     @Qualifier("tableService")
@@ -140,9 +138,9 @@ public class TableAction extends BaseController {
     }
 
 
-    /**
+    *//**
      * 生成一个controller
-     */
+     *//*
     @RequestMapping(value = "/getOneController")
     @ResponseBody
     public String getOneController(String schemaName) throws Exception {
@@ -156,9 +154,9 @@ public class TableAction extends BaseController {
         return "success";
     }
 
-    /**
+    *//**
      * 生成controller
-     */
+     *//*
     @RequestMapping(value = "/getController")
     @ResponseBody
     public String getController(String tableName, String schemaName)
@@ -180,9 +178,9 @@ public class TableAction extends BaseController {
         return "success";
     }
 
-    /**
+    *//**
      * 生成 mysql 全部
-     */
+     *//*
     @RequestMapping(value = "/getMySqlAll")
     @ResponseBody
     public String getMySqlAll(String tableName, String schemaName)
@@ -214,19 +212,16 @@ public class TableAction extends BaseController {
         String serviceFolderName = TableUtil.toParameterName(TableUtil.toClassName(tableName)).toLowerCase();
         TableUtil.buildFile(TableUtil.MysqlServicePath + "."
                 + serviceFolderName, serviceFileName, serviceRe);
-        //
         String serviceImplRe = genMysqlSeService.geneServiceImpl(tableName, schemaName);
         String serviceImplFileName = TableUtil.toClassName(tableName)
                 + "ServiceImpl.java";
-        TableUtil.buildFile(TableUtil.MysqlServicePath + "."
-                        + serviceFolderName + ".impl", serviceImplFileName, serviceImplRe);
-        //
+        TableUtil.buildFile(TableUtil.MysqlServicePath + "." + serviceFolderName + ".impl", serviceImplFileName, serviceImplRe);
         return "success";
     }
 
-    /**
+    *//**
      * 生成 Oracle 全部
-     */
+     *//*
     @RequestMapping(value = "/getOracleAll")
     @ResponseBody
     public String getOracleAll(String tableName, String schemaName)
@@ -285,9 +280,9 @@ public class TableAction extends BaseController {
         return "success";
     }
 
-    /**
+    *//**
      * 执行一次全部生成
-     */
+     *//*
     @RequestMapping(value = "/getAll")
     @ResponseBody
     public Map getAll(String schemaName) throws Exception {
@@ -340,6 +335,6 @@ public class TableAction extends BaseController {
         TableUtil.buildFile(TableUtil.controllerPath, fileName, re);
         return "success";
     }
-
+*/
 
 }
