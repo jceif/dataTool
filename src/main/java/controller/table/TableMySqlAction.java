@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import service.table.*;
 import tool.TableUtil;
@@ -64,16 +63,16 @@ public class TableMySqlAction extends BaseController {
     @RequestMapping(value = "/getTableSingle")
     @ResponseBody
     public Table getTableSingle() {
-        String tableName = "user_info";
-        String schemaName = "minxindai_2";
+        String tableName = "user_main";
+        String schemaName = "stsyd-develop";
         return tableService.getTableDefine(tableName, schemaName);
     }
 
     @RequestMapping(value = "/getTableColumnInfo")
     @ResponseBody
     public List<TableColumn> getTableColumnInfo() {
-        String schemaName = "minxindai_2";
-        String tableName = "user_info";
+        String schemaName = "stsyd-develop";
+        String tableName = "user_main";
         List<TableColumn> lstTableColumn = tableService.getMysqlTableColumnInfo(tableName, schemaName);
         return lstTableColumn;
     }
