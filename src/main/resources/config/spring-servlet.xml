@@ -5,23 +5,11 @@
             http://www.springframework.org/schema/beans/spring-beans.xsd"
        default-lazy-init="true">
 
-
     <!-- 视图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/view/"></property>
         <property name="suffix" value=".jsp"></property>
     </bean>
-
-
-    <!-- 将配置文件读取到容器中，交给Spring管理 -->
-    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-        <property name="locations">
-            <list>
-                <value>classpath:properties/file.properties</value>
-            </list>
-        </property>
-    </bean>
-
 
 
 
