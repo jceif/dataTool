@@ -11,25 +11,25 @@ import java.util.Set;
 
 public class TableUtil {
 
+	public  static final  String path="com.shengtianauto.site.";
+	public static final String MysqlPoPath = path+"model.";
+	public static final String MysqlMapperPath = path+"dao.mapper.";
+	public static final String MysqlServicePath = path+"service.";
+	public static final String MysqlServiceImplPath = path+"impl.";
 
-	public static final String MysqlPoPath = "com.violin.com.jceif.data.model.";
-	public static final String MysqlMapperPath = "com.violin.com.jceif.data.dao.mapper.";
-	public static final String MysqlServicePath = "com.violin.com.jceif.data.service.";
-	public static final String MysqlServiceImplPath = "com.violin.serviceImpl.";
-
-	public static final String OraclePoPath = "com.violin.dc.com.jceif.data.model.";
-	public static final String OracleMapperPath = "com.violin.dc.oracle.mapper.";
-	public static final String OracleServicePath = "com.violin.dc.com.jceif.data.service.oracle.";
-	public static final String OracleServiceImplPath = "com.violin.dc.com.jceif.data.service.oracle.com.jceif.data.impl.";
+	public static final String OraclePoPath = path+".model.";
+	public static final String OracleMapperPath = path+"dao.mapper.";
+	public static final String OracleServicePath = path+"service.";
+	public static final String OracleServiceImplPath = path+"impl.";
 
 	public static final String databaseTypeOracle = "oracle";
 	public static final String databaseTypeMysql = "mysql";
 
-	public static final String pageUtilPath = "com.violin.dc.pager.PageUtil;";
+	public static final String pageUtilPath = path+"pager.PageUtil;";
 
-	public static final String controllerPath = "com.violin.com.jceif.data.controller.";
+	public static final String controllerPath = path+"controller.";
 
-	public static final String handlerPath = "com.violin.dc.handler.HandlerClob";
+	public static final String handlerPath =path+"handler.HandlerClob";
 
 	public static Set<String> specialColumn = new HashSet<String>();
 

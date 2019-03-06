@@ -5,8 +5,8 @@
        xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-   <!-- &lt;!&ndash; 引入外部properties文件 &ndash;&gt;
-    <context:property-placeholder location="classpath:properties/jdbc.properties" />-->
+    <!-- &lt;!&ndash; 引入外部properties文件 &ndash;&gt;
+     <context:property-placeholder location="classpath:properties/jdbc.properties" />-->
     <!-- ====================================================== Add MyBatis Support Start ====================================================== -->
     <!-- 配置写数据源 -->
     <bean id="dataSourceWrite" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
@@ -35,19 +35,6 @@
         <!-- 配置监控统计拦截的filters -->
         <property name="filters" value="config,stat,log4j,wall" />
         <property name="connectionProperties" value="config.decrypt=false" />
-    </bean>
-
-
-    <!-- 只读的SessionFactory -->
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" scope="singleton">
-        <property name="dataSource" ref="dataSourceWrite" />
-        <property name="mapperLocations" value="classpath*:com/jceif/data/dao/db/*Mapper.xml"/>
-    </bean>
-
-
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage"  value="com.jceif.data.dao.mapper" />
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
 
 

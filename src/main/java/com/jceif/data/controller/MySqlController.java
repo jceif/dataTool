@@ -159,12 +159,12 @@ public class MySqlController extends BaseController {
      */
     @RequestMapping(value = "/getAll")
     @ResponseBody
-    public Map getAll(String schemaName) throws Exception {
+    public String getAll(String schemaName) throws Exception {
         System.out.println("schemaName=" + schemaName);
         Map<String, String> map = new HashMap<String, String>();
         if (schemaName == null) {
             System.out.println("请输入数据库名称");
-           return  map;
+           return  JSONObject.valueToString(map);
         }else {
             List<Table> tables = tableService.getTableDefineBySchema(schemaName);
             map.put("OneController", this.getOneController(schemaName));
@@ -176,9 +176,9 @@ public class MySqlController extends BaseController {
 
             }
             String json = JSONObject.valueToString(map);
-            System.out.println(json);
+            //System.out.println(json);
         }
-        return map;
+        return JSONObject.valueToString(map);
     }
 
     @RequestMapping(value = "/getDubboCustomer")

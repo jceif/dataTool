@@ -31,14 +31,17 @@
 
 
 
-    <mvc:default-servlet-handler/>
+    <!-- 只读的SessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" scope="singleton">
+        <property name="dataSource" ref="dataSourceWrite" />
+        <property name="mapperLocations" value="classpath*:com/jceif/data/dao/db/*Mapper.xml"/>
+    </bean>
 
 
-    <!--  ================================== import sub-config file  ================================== -->
-    <import resource="spring-mybatis.xml" />
-    <!--  ================================== /import sub-config file  ================================== -->
-    <!-- 启用aop代理 -->
-    <!--<aop:aspectj-autoproxy proxy-target-class="true"/>-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage"  value="com.jceif.data.dao.mapper" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+    </bean>
 
 
 </beans>
