@@ -66,7 +66,7 @@ public class GenOracleSeImpl implements GenOracleSeService {
         // String fileName = className + "ServiceImpl.java";
         StringBuffer fileContent = new StringBuffer();
         fileContent.append("package " + TableUtil.OracleServicePath
-                + TableUtil.toClassName(tableName).toLowerCase() + ".com.jceif.data.impl"
+                + TableUtil.toClassName(tableName).toLowerCase() + ".impl"
                 + " ;");
         fileContent.append(LINE);
         fileContent.append(LINE);

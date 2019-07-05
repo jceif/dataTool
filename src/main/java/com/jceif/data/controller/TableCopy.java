@@ -214,7 +214,7 @@ public class TableCopy extends BaseController {
         String serviceImplRe = genMysqlSeService.geneServiceImpl(tableName, schemaName);
         String serviceImplFileName = TableUtil.toClassName(tableName)
                 + "ServiceImpl.java";
-        TableUtil.buildFile(TableUtil.MysqlServicePath + "." + serviceFolderName + ".com.jceif.data.impl", serviceImplFileName, serviceImplRe);
+        TableUtil.buildFile(TableUtil.MysqlServicePath + "." + serviceFolderName + ".impl", serviceImplFileName, serviceImplRe);
         return "success";
     }
 

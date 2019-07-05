@@ -47,6 +47,7 @@
 		  FROM information_schema.columns
 		 WHERE TABLE_NAME=#{TABLE_NAME}
 		   AND TABLE_SCHEMA=#{TABLE_SCHEMA}
+		    ORDER BY ORDINAL_POSITION asc
     </select>
 
 </mapper>         

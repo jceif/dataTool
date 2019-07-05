@@ -73,7 +73,7 @@ public class GenMysqlSeImpl implements GenMysqlSeService {
 		String className = TableUtil.toClassName(tableName);
 		StringBuffer fileContent = new StringBuffer();
 		fileContent.append("package " + TableUtil.MysqlServicePath
-				+ className.toLowerCase() + ".com.jceif.data.impl" + " ;");
+				+ className.toLowerCase() + ".impl" + " ;");
 		fileContent.append(LINE);
 		fileContent.append(LINE);
 		fileContent.append("import java.util.Map;");
