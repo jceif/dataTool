@@ -199,12 +199,12 @@ public class TableCopy extends BaseController {
         String xmlRe = genMysqlDaoXMLService.geneMybatisXML(tableName, schemaName);
         String xmlFileName = TableUtil.toClassName(tableName) + "Mapper.xml";
         String xmlFolderName = TableUtil.toParameterName(TableUtil.toClassName(tableName)).toLowerCase();
-        TableUtil.buildFile(TableUtil.MysqlMapperPath + "." + xmlFolderName, xmlFileName, xmlRe);
+        TableUtil.buildFile(TableUtil.MysqlDaoMapperPath + "." + xmlFolderName, xmlFileName, xmlRe);
         String mapperRe = genMysqlDaoService.geneMapper(tableName, schemaName);
         String mapperFileName = TableUtil.toClassName(tableName)
                 + "Mapper.java";
         String mapperFolderName = TableUtil.toParameterName(TableUtil.toClassName(tableName)).toLowerCase();
-        TableUtil.buildFile(TableUtil.MysqlMapperPath + "." + mapperFolderName, mapperFileName, mapperRe);
+        TableUtil.buildFile(TableUtil.MysqlDaoMapperPath + "." + mapperFolderName, mapperFileName, mapperRe);
         String serviceRe = genMysqlSeService.geneService(tableName, schemaName);
         String serviceFileName = TableUtil.toClassName(tableName)
                 + "Service.java";

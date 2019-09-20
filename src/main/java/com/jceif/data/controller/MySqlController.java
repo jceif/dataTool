@@ -125,25 +125,26 @@ public class MySqlController extends BaseController {
                 String poFileName = TableUtil.toClassName(tableName) + ".java";
                 String poFolderName = TableUtil.toParameterName(TableUtil.toClassName(tableName)).toLowerCase();
                 TableUtil.buildFile(TableUtil.MysqlPoPath + "." + poFolderName, poFileName, poRe);
+
                 String xmlRe = genMysqlDaoXMLService.geneMybatisXML(tableName, schemaName);
                 String xmlFileName = TableUtil.toClassName(tableName) + "Mapper.xml";
                 String xmlFolderName = TableUtil.toParameterName(TableUtil.toClassName(tableName)).toLowerCase();
-                TableUtil.buildFile(TableUtil.MysqlMapperPath + "." + xmlFolderName, xmlFileName, xmlRe);
+                TableUtil.buildFile(TableUtil.MysqlDaoMappingPath + "." + xmlFolderName, xmlFileName, xmlRe);
+
+
                 String mapperRe = genMysqlDaoService.geneMapper(tableName, schemaName);
-                String mapperFileName = TableUtil.toClassName(tableName)
-                        + "Mapper.java";
+                String mapperFileName = TableUtil.toClassName(tableName) + "Mapper.java";
                 String mapperFolderName = TableUtil.toParameterName(TableUtil.toClassName(tableName)).toLowerCase();
-                TableUtil.buildFile(TableUtil.MysqlMapperPath + "." + mapperFolderName, mapperFileName, mapperRe);
+                TableUtil.buildFile(TableUtil.MysqlDaoMapperPath + "." + mapperFolderName, mapperFileName, mapperRe);
+
                 String serviceRe = genMysqlSeService.geneService(tableName, schemaName);
-                String serviceFileName = TableUtil.toClassName(tableName)
-                        + "Service.java";
+                String serviceFileName = TableUtil.toClassName(tableName) + "Service.java";
                 String serviceFolderName = TableUtil.toParameterName(TableUtil.toClassName(tableName)).toLowerCase();
-                TableUtil.buildFile(TableUtil.MysqlServicePath + "."
-                        + serviceFolderName, serviceFileName, serviceRe);
+                TableUtil.buildFile(TableUtil.MysqlServicePath + "." + serviceFolderName, serviceFileName, serviceRe);
+
                 String serviceImplRe = genMysqlSeService.geneServiceImpl(tableName, schemaName);
-                String serviceImplFileName = TableUtil.toClassName(tableName)
-                        + "ServiceImpl.java";
-                TableUtil.buildFile(TableUtil.MysqlServicePath + "." + serviceFolderName + ".impl", serviceImplFileName, serviceImplRe);
+                String serviceImplFileName = TableUtil.toClassName(tableName) + "ServiceImpl.java";
+                TableUtil.buildFile(TableUtil.MysqlServiceImplPath + "." + serviceFolderName , serviceImplFileName, serviceImplRe);
             } catch (Exception ex) {
                 return  ex.getMessage();
             }
@@ -159,24 +160,24 @@ public class MySqlController extends BaseController {
      */
     @RequestMapping(value = "/getAll")
     @ResponseBody
-    public String getAll(String schemaName) throws Exception {
+    public String getAll(String schemaName) {
         System.out.println("schemaName=" + schemaName);
         Map<String, String> map = new HashMap<String, String>();
         if (schemaName == null) {
             System.out.println("请输入数据库名称");
-           return  JSONObject.valueToString(map);
-        }else {
+            return JSONObject.valueToString(map);
+        } else {
             List<Table> tables = tableService.getTableDefineBySchema(schemaName);
-            map.put("OneController", this.getOneController(schemaName));
+            // map.put("OneController", this.getOneController(schemaName));
             for (int i = 0; i < tables.size(); i++) {
                 Table table = tables.get(i);
                 String tableName = table.getTableName();
-                map.put(tableName + "Controller", this.getController(tableName, schemaName));
-                map.put(tableName, this.getMySqlAll(tableName, schemaName));
+                getMySqlAll(tableName, schemaName);
+//                map.put(tableName + "Controller", this.getController(tableName, schemaName));
+//                map.put(tableName, this.getMySqlAll(tableName, schemaName));
 
             }
             String json = JSONObject.valueToString(map);
-            //System.out.println(json);
         }
         return JSONObject.valueToString(map);
     }

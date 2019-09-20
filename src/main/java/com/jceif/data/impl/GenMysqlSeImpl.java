@@ -24,8 +24,7 @@ public class GenMysqlSeImpl implements GenMysqlSeService {
 			throws Exception {
 		String className = TableUtil.toClassName(tableName);
 		StringBuffer fileContent = new StringBuffer();
-		fileContent.append("package " + TableUtil.MysqlServicePath
-				+ className.toLowerCase() + " ;");
+		fileContent.append("package " + TableUtil.MysqlServicePath + className.toLowerCase() + " ;");
 		fileContent.append(LINE);
 		fileContent.append(LINE);
 		fileContent.append("import java.util.List;");
@@ -72,8 +71,7 @@ public class GenMysqlSeImpl implements GenMysqlSeService {
 			throws Exception {
 		String className = TableUtil.toClassName(tableName);
 		StringBuffer fileContent = new StringBuffer();
-		fileContent.append("package " + TableUtil.MysqlServicePath
-				+ className.toLowerCase() + ".impl" + " ;");
+		fileContent.append("package " + TableUtil.MysqlServiceImplPath + className.toLowerCase() + "" + " ;");
 		fileContent.append(LINE);
 		fileContent.append(LINE);
 		fileContent.append("import java.util.Map;");
@@ -86,7 +84,7 @@ public class GenMysqlSeImpl implements GenMysqlSeService {
 		fileContent.append("import " + TableUtil.MysqlPoPath
 				+ className.toLowerCase() + "." + className + ";");
 		fileContent.append(LINE);
-		fileContent.append("import " + TableUtil.MysqlMapperPath
+		fileContent.append("import " + TableUtil.MysqlDaoMapperPath
 				+ className.toLowerCase() + "." + className + "Mapper;");
 		fileContent.append(LINE);
 		fileContent.append("import " + TableUtil.MysqlServicePath

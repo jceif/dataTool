@@ -41,7 +41,7 @@ public class GenMysqlDaoXMLImpl implements GenMysqlDaoXMLService {
 		sb.append("\"http://mybatis.org/dtd/mybatis-3-mapper.dtd\" > ");
 		sb.append(LINE);
 		String className = TableUtil.toClassName(tableName);
-		sb.append("<mapper namespace=\"" + TableUtil.MysqlMapperPath
+		sb.append("<mapper namespace=\"" + TableUtil.MysqlDaoMapperPath
 				+ TableUtil.toClassName(tableName).toLowerCase() + "."
 				+ className + "Mapper" + "\">");
 		sb.append(LINE);

@@ -25,7 +25,7 @@ public class GenMysqlDaoImpl implements GenMysqlDaoService {
 		String className = TableUtil.toClassName(tableName);
 		StringBuffer fileContent = new StringBuffer();
 
-		fileContent.append("package " + TableUtil.MysqlMapperPath
+		fileContent.append("package " + TableUtil.MysqlDaoMapperPath
 				+ className.toLowerCase() + " ;");
 		fileContent.append(LINE);
 		fileContent.append(LINE);

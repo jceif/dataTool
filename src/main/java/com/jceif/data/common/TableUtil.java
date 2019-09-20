@@ -11,9 +11,10 @@ import java.util.Set;
 
 public class TableUtil {
 
-	public  static final  String path="com.shengtianauto.site.";
+	public  static final  String path="com.szk.provider.";
 	public static final String MysqlPoPath = path+"model.";
-	public static final String MysqlMapperPath = path+"dao.mapper.";
+	public static final String MysqlDaoMapperPath = path+"dao.mapper.";
+	public static final String MysqlDaoMappingPath = path+"dao.mapping";
 	public static final String MysqlServicePath = path+"service.";
 	public static final String MysqlServiceImplPath = path+"impl.";
 
